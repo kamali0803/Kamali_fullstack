@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Ticket Reservation </title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"] {
+            width: 90%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            width: 48%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #45a049;
+        }
+
+        .btn-group:after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var name = document.forms["ticketForm"]["name"].value;
+            var email = document.forms["ticketForm"]["email"].value;
+            var phone = document.forms["ticketForm"]["phone"].value;
+            var address = document.forms["ticketForm"]["address"].value;
+            var age = document.forms["ticketForm"]["age"].value;
+            var tickets = document.forms["ticketForm"]["tickets"].value;
+            var errorElement = document.getElementById('error');
+
+            if (name === "") {
+                errorElement.innerHTML = "Please enter your name";
+                return false;
+            }
+
+            if (email === "") {
+                errorElement.innerHTML = "Please enter your email";
+                return false;
+            }
+
+            if (phone === "") {
+                errorElement.innerHTML = "Please enter your phone number";
+                return false;
+            }
+
+            if (address === "") {
+                errorElement.innerHTML = "Please enter your address";
+                return false;
+            }
+
+            if (age === "" || age <= 0) {
+                errorElement.innerHTML = "Please enter a valid age";
+                return false;
+            }
+
+            if (tickets === "" || tickets <= 0) {
+                errorElement.innerHTML = "Please enter a valid number of tickets";
+                return false;
+            }
+
+            errorElement.innerHTML = "";
+            alert("Ticket reservation confirmed. Enjoy the event!");
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2 style="text-align: center; color: #4CAF50;">Ticket Reservation </h2>
+
+        <form name="ticketForm" onsubmit="return validateForm()" method="post">
+            <div class="form-group">
+                <label for="name" style="color: #FF5733;">Name:</label>
+                <input type="text" id="name" name="name">
+            </div>
+
+            <div class="form-group">
+                <label for="email" style="color: #FFC300;">Email:</label>
+                <input type="email" id="email" name="email">
+            </div>
+
+            <div class="form-group">
+                <label for="phone" style="color: #C70039;">Phone Number:</label>
+                <input type="text" id="phone" name="phone">
+            </div>
+
+            <div class="form-group">
+                <label for="address" style="color: #900C3F;">Address:</label>
+                <input type="text" id="address" name="address">
+            </div>
+
+            <div class="form-group">
+                <label for="age" style="color: #581845;">Age:</label>
+                <input type="number" id="age" name="age" min="1">
+            </div>
+
+            <div class="form-group">
+                <label for="tickets" style="color: #581845;">Number of Tickets:</label>
+                <input type="number" id="tickets" name="tickets" min="1">
+            </div>
+
+            <div class="btn-group">
+                <input type="submit" value="Reserve Tickets">
+                <input type="reset" value="Reset">
+            </div>
+            <span class="error" id="error"></span>
+        </form>
+    </div>
+
+</body>
+
+</html>
+
+
